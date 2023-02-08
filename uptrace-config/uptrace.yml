@@ -1,0 +1,46 @@
+listen:
+  # OTLP/gRPC API.
+  grpc:
+    addr: ":14317"
+
+  # OTLP/HTTP and Uptrace API with UI.
+  http:
+    addr: ":14318"
+
+projects:
+  - id: 1
+    name: SampleApp
+    # Token grants write access to the project. Keep a secret.
+    token: project1_secret_token
+    # A list of attributes to pin on the Overview page.
+    pinned_attrs:
+      - service.name
+      - host.name
+      - deployment.environment
+
+ch:
+  addr: localhost:9000
+  user: default
+  password:
+  database: uptrace
+
+ch_schema:
+  # Compression codec, for example, LZ4, ZSTD(3), or Default.
+  compression: ZSTD(3)
+  spans:
+    # Delete spans data after 30 days.
+    ttl_delete: 30 DAY
+    storage_policy: "default"
+
+  metrics:
+    # Delete metrics data after 90 days.
+    ttl_delete: 90 DAY
+    storage_policy: "default"
+
+db:
+  driver: sqlite
+  # Uptrace automatically creates SQLite database file in the current working directory.
+  # Make sure the directory is writable by Uptrace process.
+  dsn: "file:uptrace.sqlite3?_pragma=foreign_keys(1)&_pragma=busy_timeout(1000)"
+
+
