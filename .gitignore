@@ -27,3 +27,4 @@ otel_getting_started-*.tar
 
 
 uptrace/uptrace
+uptrace/uptrace.sqlite3
