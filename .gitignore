@@ -24,3 +24,6 @@ otel_getting_started-*.tar
 
 # Temporary files, for example, from tests.
 /tmp/
+
+
+uptrace/uptrace

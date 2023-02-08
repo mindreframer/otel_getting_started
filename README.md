@@ -10,11 +10,14 @@ $ cd otel_getting_started
 $ mix deps.get
 
 
-# start uptrace
-$ ./uptrace --config uptrace-config/uptrace.yml serve
+# download uptrace
+$ uptrace/download.sh
+
+# reset + start uptrace
+$ uptrace/start.sh
 
 
-# start elixir app
+# start elixir app in another terminal
 $ iex -S mix 
 # wait until `[info] OTLP exporter successfully initialized`
 iex> OtelGettingStarted.hello()
